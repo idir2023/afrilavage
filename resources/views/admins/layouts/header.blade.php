@@ -98,9 +98,10 @@
                                  </small>
                                  <small class="text-muted">{{ $notification->created_at->diffForHumans() }}</small>
                                  <button class="btn-read-notification btn btn-sm btn-primary"
-                                     data-id="{{ $notification->id }}">
-                                     Read
+                                     data-id="{{ $notification->id }}" title="Marquer comme lu">
+                                     <i class="mdi mdi-eye"></i>
                                  </button>
+
                              </div>
                          </a>
                          <div class="dropdown-divider"></div>

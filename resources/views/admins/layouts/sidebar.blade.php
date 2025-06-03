@@ -26,7 +26,9 @@
          <li class="nav-item">
              <a class="nav-link" href="{{ route('orders.index') }}">
                  <span class="menu-title">Orders</span>
-                 <i class="mdi mdi-receipt menu-icon"></i>
+                 {{-- <i class="mdi mdi-receipt menu-icon"></i> --}}
+                 <i class="mdi mdi-cart-outline menu-icon"></i>
+
              </a>
          </li>
 
