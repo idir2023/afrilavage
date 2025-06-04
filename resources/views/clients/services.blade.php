@@ -668,7 +668,7 @@
                 <p class="section-description">Choisissez parmi notre large gamme de services adaptés à vos besoins
                     spécifiques.</p>
             </div>
-
+{{--             
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card" data-category="pressing">
@@ -1062,7 +1062,49 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
+
+            <div class="services-grid">
+                @foreach ($services as $service)
+                    <div class="service-card" data-category="{{ $service->category }}">
+                        <div class="service-image">
+                            <div class="service-icon">
+                                <i class="{{ $service->icon ?? 'fas fa-cogs' }}"></i>
+                            </div>
+                            @if ($service->badge)
+                                <div class="service-badge">{{ $service->badge }}</div>
+                            @endif
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">{{ $service->titre }}</h3>
+                            <p class="service-description">{{ $service->description }}</p>
+
+                            @if (!empty($service->features) && is_array($service->features))
+                                <div class="service-features">
+                                    @foreach ($service->features as $feature)
+                                        <div class="service-feature">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>{{ $feature }}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            <div class="service-footer">
+                                <div class="service-price">
+                                    {{ $service->price }} DH <span>/ {{ $service->unit }}</span>
+                                </div>
+                                <a href="{{ route('order', ['service' => $service->route]) }}" class="service-action">
+                                    <span>Commander</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
+
+
         </div>
     </section>
 

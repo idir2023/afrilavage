@@ -67,5 +67,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+        // Appel d'un seeder supplémentaire (par exemple pour insérer les services)
+        $this->call(ServiceSeeder::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Notification;
 use App\Models\Order;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,9 @@ class HomeController extends Controller
 
     public function service()
     {
-        return view('clients.services');
+        $services = Service::all();
+
+        return view('clients.services', compact('services'));
     }
 
 
@@ -34,8 +37,9 @@ class HomeController extends Controller
     {
         $service = $request->query('service'); // récupère ?service=pack-premium
         $promo =  $request->query('promo');
+        $services = Service::all();
 
-        return view('clients.order', compact('service', 'promo'));
+        return view('clients.order', compact('service', 'services', 'promo'));
     }
 
     public function tracking()

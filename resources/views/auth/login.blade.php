@@ -715,21 +715,6 @@
                          </div>
                      </div>
 
-                     <!-- Séparateur -->
-                     <div class="login-divider">Ou connectez-vous avec</div>
-
-                     <!-- Boutons de connexion sociale -->
-                     <div class="social-logins">
-                         <button class="social-login-btn facebook-btn">
-                             <i class="fab fa-facebook-f"></i>
-                             <span>Facebook</span>
-                         </button>
-                         <button class="social-login-btn google-btn">
-                             <i class="fab fa-google"></i>
-                             <span>Google</span>
-                         </button>
-                     </div>
-
                      <!-- Pied de page de la carte -->
                      <div class="login-footer" id="loginFooter">
                          Vous n'avez pas de compte ? <a href="#" id="goToRegisterLink">Inscrivez-vous</a>

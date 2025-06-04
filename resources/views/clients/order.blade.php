@@ -1124,6 +1124,16 @@
                                     <div class="service-name">Pack Complet</div>
                                     <div class="service-price">À partir de 150 DH</div>
                                 </div>
+                                {{-- @foreach ($services as $service)
+                                    <div class="service-type" data-service="{{ strtolower($service->category) }}">
+                                        <div class="service-icon">
+                                            <i class="fas {{ $service->icon }}"></i>
+                                        </div>
+                                        <div class="service-name">{{ $service->category }}</div>
+                                        <div class="service-price">À partir de {{ $service->price }} DH</div>
+                                    </div>
+                                @endforeach --}}
+
                             </div>
 
                             <div class="form-group">

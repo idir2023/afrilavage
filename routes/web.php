@@ -4,6 +4,7 @@
     use App\Http\Controllers\HomeController;
     use App\Http\Controllers\OrderController;
     use App\Http\Controllers\AdminController;
+    use App\Http\Controllers\NotificationController;
     use App\Http\Controllers\ProfileController;
 
     /*
@@ -31,6 +32,8 @@
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::resource('orders', OrderController::class);
         Route::post('/notifications/{id}/read', [OrderController::class, 'markAsRead'])->name('notifications.read');
+        Route::resource('notifications', NotificationController::class);
+
 
         // Tu peux ajouter d'autres routes admin ici, par exemple :
         // Route::get('/users', [AdminController::class, 'users'])->name('admin.users');

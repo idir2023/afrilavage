@@ -32,6 +32,14 @@
              </a>
          </li>
 
+         <li class="nav-item">
+             <a class="nav-link" href="{{ route('notifications.index') }}">
+                 <span class="menu-title">Notifications</span>
+                 <i class="mdi mdi-bell-outline menu-icon"></i>
+             </a>
+         </li>
+
+
 
      </ul>
  </nav>
