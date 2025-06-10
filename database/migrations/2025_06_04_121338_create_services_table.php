@@ -12,7 +12,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('title');                 // Nom du service (affiché)
             $table->string('route')->unique();       // Slug pour l'URL (ex: car-complete)
-            $table->string('category')->nullable();  // Catégorie (ex: pressing, car, pack)
+            // $table->string('category')->nullable();  // Catégorie (ex: pressing, car, pack)
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->string('icon')->nullable();      // Icône FontAwesome (ex: fas fa-car)
             $table->string('badge')->nullable();     // Badge (ex: Premium, Populaire)
             $table->text('description')->nullable(); // Description du service

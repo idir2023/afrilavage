@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -140,19 +142,24 @@ class ServiceSeeder extends Seeder
             ],
         ];
 
-        foreach ($services as $service) {
-            DB::table('services')->insert([
-                'category' => $service['category'],
-                'title' => $service['title'],
-                'description' => $service['description'],
-                'features' => $service['features'],
-                'price' => $service['price'],
-                'unit' => $service['unit'],
-                'badge' => $service['badge'],
-                'icon' => $service['icon'],
-                'route' => $service['route'],
-                'created_at' => now(),
-                'updated_at' => now(),
+        foreach ($services as $data) {
+            // Trouver ou créer la catégorie
+            $category = Category::firstOrCreate(
+                ['name' => $data['category']],
+                ['icon' => $data['icon']]
+            );
+
+            // Créer le service avec la foreign key
+            Service::create([
+                'title' => $data['title'],
+                'route' => $data['route'],
+                'category_id' => $category->id,
+                'icon' => $data['icon'],
+                'badge' => $data['badge'],
+                'description' => $data['description'],
+                'features' => json_encode($data['features']),
+                'price' => $data['price'],
+                'unit' => $data['unit'],
             ]);
         }
     }

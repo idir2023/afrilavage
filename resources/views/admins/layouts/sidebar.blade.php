@@ -40,12 +40,13 @@
          </li>
 
 
-              <li class="nav-item">
+         <li class="nav-item">
              <a class="nav-link" href="{{ route('services.index') }}">
-                 <span class="menu-title">services</span>
-                 <i class="mdi mdi-bell-outline menu-icon"></i>
+                 <span class="menu-title">Services</span>
+                 <i class="mdi mdi-briefcase-outline menu-icon"></i>
              </a>
          </li>
+
 
      </ul>
  </nav>

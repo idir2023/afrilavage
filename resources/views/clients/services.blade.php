@@ -630,7 +630,7 @@
     <!-- Catégories -->
     <section class="services-categories">
         <div class="container">
-            <div class="categories-tabs">
+            {{-- <div class="categories-tabs">
                 <div class="category-tab active" data-category="all">
                     <i class="fas fa-th-large"></i>
                     <span>Tous</span>
@@ -655,7 +655,23 @@
                     <i class="fas fa-box"></i>
                     <span>Packs</span>
                 </div>
+            </div> --}}
+            <div class="categories-tabs">
+                {{-- Onglet "Tous" --}}
+                <div class="category-tab active" data-category="all">
+                    <i class="fas fa-th-large"></i>
+                    <span>Tous</span>
+                </div>
+
+                {{-- Onglets dynamiques --}}
+                @foreach ($categories as $category)
+                    <div class="category-tab" data-category="{{ Str::slug($category->name) }}">
+                        <i class="{{ $category->icon }}"></i>
+                        <span>{{ ucfirst($category->name) }}</span>
+                    </div>
+                @endforeach
             </div>
+
         </div>
     </section>
 
@@ -668,7 +684,7 @@
                 <p class="section-description">Choisissez parmi notre large gamme de services adaptés à vos besoins
                     spécifiques.</p>
             </div>
-{{--             
+            {{--             
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card" data-category="pressing">
@@ -1103,8 +1119,7 @@
                     </div>
                 @endforeach
             </div>
-
-
+            
         </div>
     </section>
 

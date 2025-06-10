@@ -13,7 +13,7 @@ class ServiceController extends Controller
     public function index()
     {
         // Utilise la pagination pour de meilleures performances si la liste est longue
-        $services = Service::paginate(10); // Tu peux changer "10" selon ton besoin
+        $services = Service::paginate(5); // Tu peux changer "10" selon ton besoin
         return view('admins.services.index', compact('services'));
     }
 

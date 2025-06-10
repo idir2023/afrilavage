@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Models\Service;
@@ -28,8 +29,9 @@ class HomeController extends Controller
     public function service()
     {
         $services = Service::all();
+        $categories = Category::all();
 
-        return view('clients.services', compact('services'));
+        return view('clients.services', compact('services', 'categories'));
     }
 
 
