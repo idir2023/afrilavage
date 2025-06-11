@@ -53,10 +53,6 @@
                                              </td>
                                              <td>{{ ucfirst($notification->type) }}</td>
                                              <td>
-                                                 <a href="{{ route('notifications.show', $notification->id) }}"
-                                                     class="btn btn-sm btn-info" title="Voir">
-                                                     <i class="mdi mdi-eye"></i>
-                                                 </a>
 
                                                  <form action="{{ route('notifications.destroy', $notification->id) }}"
                                                      method="POST" style="display:inline;">
@@ -76,7 +72,9 @@
                              </table>
 
                              {{-- Pagination --}}
-                             {{ $notifications->links() }}
+                             <div class="d-flex justify-content-end mt-3">
+                                 {{ $notifications->links('pagination::bootstrap-5') }}
+                             </div>
                          </div>
                      @else
                          <p class="text-center">Aucune notification trouvée.</p>

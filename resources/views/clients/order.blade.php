@@ -1509,14 +1509,14 @@
                                                 <div class="form-group">
                                                     <label class="form-label">Nom complet</label>
                                                     <input type="text" class="form-input"
-                                                        placeholder="Votre nom complet" name="fullname">
+                                                        placeholder="Votre nom complet" name="fullname" value="{{ Auth::user()->username }}">
                                                 </div>
                                             </div>
                                             <div class="form-col">
                                                 <div class="form-group">
                                                     <label class="form-label">Téléphone</label>
                                                     <input type="tel" class="form-input"
-                                                        placeholder="Votre numéro de téléphone" name="phone">
+                                                        placeholder="Votre numéro de téléphone" name="phone" value="{{ Auth::user()->phone }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -1606,7 +1606,7 @@
                                 <div class="summary-total">
                                     <div class="summary-total-label">Total</div>
                                     <div class="summary-total-price" id="orderTotal">120 DH</div>
-                                    <input type="text" value="" name="total_price" id="TotalPrice">
+                                    <input type="hidden" value="" name="total_price" id="TotalPrice">
                                 </div>
                             </div>
 

@@ -20,6 +20,13 @@
          </nav>
      </div>
 
+     {{-- Message de succès --}}
+     @if (session('success'))
+         <div class="alert alert-success">
+             {{ session('success') }}
+         </div>
+     @endif
+
      <div class="row">
          <div class="col-12">
              <div class="card">
@@ -35,7 +42,6 @@
                                          <th>#</th>
                                          <th>Catégorie</th>
                                          <th>Titre</th>
-
                                          <th>Prix</th>
                                          <th>Unité</th>
                                          <th>Badge</th>
@@ -47,23 +53,27 @@
                                          <tr>
                                              <td>{{ $index + 1 }}</td>
                                              <td>{{ $service->category->name }}</td>
-                                             <td>{{ $service['title'] }}</td>
-
-                                             <td>{{ $service['price'] }} DH</td>
-                                             <td>{{ $service['unit'] }}</td>
+                                             <td>{{ $service->title }}</td>
+                                             <td>{{ $service->price }} DH</td>
+                                             <td>{{ $service->unit }}</td>
                                              <td>
-                                                 @if (!empty($service['badge']))
-                                                     <span class="badge bg-success">{{ $service['badge'] }}</span>
+                                                 @if (!empty($service->badge))
+                                                     <span class="badge bg-success">{{ $service->badge }}</span>
                                                  @else
                                                      -
                                                  @endif
                                              </td>
-
                                              <td>
-                                                 <a href="#" class="btn btn-sm btn-warning"><i
-                                                         class="mdi mdi-pencil"></i></a>
-                                                 <a href="#" class="btn btn-sm btn-danger"><i
-                                                         class="mdi mdi-delete"></i></a>
+                                                 {{-- Bouton Supprimer --}}
+                                                 <form action="{{ route('services.destroy', $service->id) }}" method="POST"
+                                                     style="display:inline-block;"
+                                                     onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce service ?');">
+                                                     @csrf
+                                                     @method('DELETE')
+                                                     <button type="submit" class="btn btn-sm btn-danger">
+                                                         <i class="mdi mdi-delete"></i>
+                                                     </button>
+                                                 </form>
                                              </td>
                                          </tr>
                                      @endforeach
@@ -71,9 +81,13 @@
                              </table>
 
                              {{-- Pagination si disponible --}}
-                             @if (method_exists($services, 'links'))
-                                 {{ $services->links('pagination::simple-bootstrap-5') }}
-                             @endif
+                             <div class="d-flex justify-content-end mt-3">
+                                 @if (method_exists($services, 'links'))
+                                     {{ $services->links('pagination::bootstrap-5') }}
+                                 @endif
+                             </div>
+
+
                          </div>
                      @else
                          <p class="text-center">Aucun service trouvé.</p>

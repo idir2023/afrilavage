@@ -67,42 +67,47 @@
      <!-- Custom js for this page -->
      <script src="{{ asset('admin/assets/js/dashboard.js') }}"></script>
      <!-- End custom js for this page -->
-     <script>
-         $(document).ready(function() {
-             $('.btn-read-notification').click(function(e) {
-                 e.preventDefault();
+<script>
+    $(document).ready(function () {
+        $('.btn-read-notification').click(function (e) {
+            e.preventDefault();
 
-                 let btn = $(this);
-                 let notificationId = btn.data('id');
+            let btn = $(this);
+            let notificationId = btn.data('id');
 
-                 $.ajax({
-                     url: `/notifications/${notificationId}/read`,
-                     type: 'POST',
-                     data: {
-                         _token: '{{ csrf_token() }}'
-                     },
-                     success: function(response) {
-                         if (response.success) {
-                             btn.text('Read ✔').prop('disabled', true);
-                             // Optionnel : retirer la notification de la liste ou modifier son style
-                             btn.closest('.preview-item').fadeOut();
-                             // Mettre à jour le compteur
-                             let countElem = $('.count-symbol.bg-danger');
-                             let count = parseInt(countElem.text());
-                             if (count > 1) {
-                                 countElem.text(count - 1);
-                             } else {
-                                 countElem.remove();
-                             }
-                         }
-                     },
-                     error: function() {
-                         alert('Erreur lors de la mise à jour de la notification.');
-                     }
-                 });
-             });
-         });
-     </script>
+            $.ajax({
+                url: `/notifications/${notificationId}/read`,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Retirer la notification de l'affichage
+                        btn.closest('.dropdown-item.preview-item').fadeOut(300, function () {
+                            $(this).remove();
+
+                            // Mettre à jour le compteur
+                            let countElem = $('.count-symbol.bg-danger');
+                            let count = parseInt(countElem.text());
+                            if (count > 1) {
+                                countElem.text(count - 1);
+                            } else {
+                                countElem.remove();
+                                $('.dropdown-menu .dropdown-divider').remove(); // Supprimer la ligne s’il n’y a plus de notifications
+                                $('.dropdown-menu').append('<p class="text-center p-3 mb-0">Aucune notification</p>');
+                            }
+                        });
+                    }
+                },
+                error: function () {
+                    alert('Erreur lors de la mise à jour de la notification.');
+                }
+            });
+        });
+    });
+</script>
+
 
      @yield('scripts')
  </body>

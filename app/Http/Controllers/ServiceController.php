@@ -28,4 +28,12 @@ class ServiceController extends Controller
         $service = Service::where('slug', $slug)->firstOrFail();
         return view('admins.services.order', compact('service'));
     }
+
+    public function destroy($id)
+    {
+        $service = Service::findOrFail($id);
+        $service->delete();
+
+        return redirect()->route('services.index')->with('success', 'Service supprimé avec succès.');
+    }
 }

@@ -68,11 +68,11 @@
                                                      <i class="mdi mdi-eye"></i>
                                                  </button>
 
-                                                 <a href="{{ route('orders.edit', $order->id) }}"
+                                                 {{-- <a href="{{ route('orders.edit', $order->id) }}"
                                                      class="btn btn-warning btn-sm" title="Modifier"
                                                      aria-label="Modifier la commande {{ $order->id }}">
                                                      <i class="mdi mdi-pencil"></i>
-                                                 </a>
+                                                 </a> --}}
                                                  <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
                                                      class="d-inline-block"
                                                      onsubmit="return confirm('Confirmer la suppression ?');">

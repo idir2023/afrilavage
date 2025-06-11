@@ -26,16 +26,7 @@
              <span class="mdi mdi-menu"></span>
          </button>
 
-         {{-- <div class="search-field d-none d-md-block">
-             <form class="d-flex align-items-center h-100" action="#">
-                 <div class="input-group">
-                     <div class="input-group-prepend bg-transparent">
-                         <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                     </div>
-                     <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects" />
-                 </div>
-             </form>
-         </div> --}}
+
 
          <ul class="navbar-nav navbar-nav-right">
 
@@ -68,7 +59,7 @@
 
                  <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list"
                      aria-labelledby="notificationDropdown">
-                     <h6 class="p-3 mb-0">Notifications</h6>
+                     <h6 class="p-3 mb-0 text-center">Notifications</h6>
                      <div class="dropdown-divider"></div>
 
                      @forelse ($notifications as $notification)
@@ -97,10 +88,15 @@
                                      {{ $notification->order->created_at->format('d/m/Y H:i') ?? 'N/A' }}
                                  </small>
                                  <small class="text-muted">{{ $notification->created_at->diffForHumans() }}</small>
-                                 <button class="btn-read-notification btn btn-sm btn-primary"
+                                 {{-- <button class="btn-read-notification btn btn-sm btn-primary"
                                      data-id="{{ $notification->id }}" title="Marquer comme lu">
                                      <i class="mdi mdi-eye"></i>
+                                 </button> --}}
+                                 <button class="btn btn-sm btn-outline-success btn-read-notification m-2"
+                                     data-id="{{ $notification->id }}" title="Marquer comme lu">
+                                     <i class="mdi mdi-eye-check-outline"></i> Lire
                                  </button>
+
 
                              </div>
                          </a>
@@ -108,10 +104,6 @@
                      @empty
                          <p class="text-center p-3 mb-0">Aucune notification</p>
                      @endforelse
-
-                     <h6 class="p-3 mb-0 text-center">
-                         <a href="#">Voir toutes les notifications</a>
-                     </h6>
                  </div>
              </li>
 
@@ -119,16 +111,13 @@
              <li class="nav-item nav-profile dropdown">
                  <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
                      aria-expanded="false">
-                     {{-- <div class="nav-profile-img">
-                         <img src="{{ asset('admin/assets/images/faces/face1.jpg') }}" alt="image" />
-                         <span class="availability-status online"></span>
-                     </div> --}}
+
                      <div class="nav-profile-text">
                          <p class="mb-1 text-black">{{ Auth::user()->username }}</p>
                      </div>
                  </a>
                  <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                
+
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="{{ route('logout') }}"
                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -148,3 +137,4 @@
          </button>
      </div>
  </nav>
+ 
