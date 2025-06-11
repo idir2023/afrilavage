@@ -58,7 +58,7 @@
                                                 <button type="button" class="btn btn-info btn-sm view-contact-btn" data-id="{{ $message->id }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </button>
-                                                <form action="{{ route('admin.contact.destroy', $message) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Supprimer ce message ?');">
+                                                <form action="{{ route('contact.destroy', $message) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Supprimer ce message ?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger btn-sm">
@@ -118,7 +118,7 @@
                         </div>
                     `;
 
-                    fetch(`/admin/contacts/${id}`, {
+                    fetch(`/contacts/${id}`, {
                         headers: { 'Accept': 'application/json' }
                     })
                     .then(res => res.json())

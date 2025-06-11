@@ -626,7 +626,7 @@
 
         /* Success message */
         .success-message {
-            display: none;
+            /* display: none; */
             background-color: #F0FDF4;
             border: 1px solid #86EFAC;
             color: #166534;
@@ -637,7 +637,7 @@
         }
 
         .success-message.show {
-            display: block;
+            /* display: block; */
             animation: fadeIn 0.5s ease;
         }
 
@@ -696,7 +696,7 @@
 
 <body>
     <!-- En-tête -->
-      @include('clients.layouts.header')
+    @include('clients.layouts.header')
 
 
     <!-- Hero Section -->
@@ -749,13 +749,16 @@
                             dans les plus brefs délais.</p>
                     </div>
 
-                    <div class="success-message" id="successMessage">
-                        <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès ! Nous vous
-                        contacterons très bientôt.
-                    </div>
 
-       <form action="{{ route('contact.store') }}" method="POST" id="contactForm">
-    @csrf
+                    @if (session('success'))
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i> {{ session('success') }}
+                        </div>
+                    @endif
+
+
+                    <form action="{{ route('contact.store') }}" method="POST" id="contactForm">
+                        @csrf
                         <div class="form-row">
                             <div class="form-col">
                                 <div class="form-group">
@@ -824,10 +827,10 @@
                                 confidentialité.</div>
                         </div>
 
-                      <button type="submit" class="contact-btn">
-        <span>Envoyer le message</span>
-        <i class="fas fa-paper-plane"></i>
-    </button>
+                        <button type="submit" class="contact-btn">
+                            <span>Envoyer le message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
 
@@ -882,7 +885,7 @@
                                 </div>
                             </li>
 
-                          
+
                         </ul>
                     </div>
 
@@ -1047,8 +1050,8 @@
         </div>
     </section>
 
-   
-   @include('clients.layouts.footer')
+
+    @include('clients.layouts.footer')
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1065,100 +1068,6 @@
             // Validation du formulaire de contact
             const contactForm = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    // Reset previous errors
-                    document.querySelectorAll('.form-error').forEach(error => {
-                        error.classList.remove('visible');
-                    });
-
-                    // Validate form
-                    let isValid = true;
-
-                    // Name validation
-                    const name = document.getElementById('name');
-                    if (!name.value.trim()) {
-                        document.getElementById('nameError').classList.add('visible');
-                        name.classList.add('error');
-                        isValid = false;
-                    } else {
-                        name.classList.remove('error');
-                    }
-
-                    // Email validation
-                    const email = document.getElementById('email');
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email.value.trim())) {
-                        document.getElementById('emailError').classList.add('visible');
-                        email.classList.add('error');
-                        isValid = false;
-                    } else {
-                        email.classList.remove('error');
-                    }
-
-                    // Phone validation (optional)
-                    const phone = document.getElementById('phone');
-                    if (phone.value.trim() && !validatePhone(phone.value.trim())) {
-                        document.getElementById('phoneError').classList.add('visible');
-                        phone.classList.add('error');
-                        isValid = false;
-                    } else {
-                        phone.classList.remove('error');
-                    }
-
-                    // Subject validation
-                    const subject = document.getElementById('subject');
-                    if (!subject.value) {
-                        document.getElementById('subjectError').classList.add('visible');
-                        subject.classList.add('error');
-                        isValid = false;
-                    } else {
-                        subject.classList.remove('error');
-                    }
-
-                    // Message validation
-                    const message = document.getElementById('message');
-                    if (!message.value.trim()) {
-                        document.getElementById('messageError').classList.add('visible');
-                        message.classList.add('error');
-                        isValid = false;
-                    } else {
-                        message.classList.remove('error');
-                    }
-
-                    // Privacy checkbox validation
-                    const privacy = document.getElementById('privacy');
-                    if (!privacy.checked) {
-                        document.getElementById('privacyError').classList.add('visible');
-                        isValid = false;
-                    }
-
-                    // If valid, show success message
-                    if (isValid) {
-                        // Simulate form submission
-                        const submitBtn = contactForm.querySelector('.contact-btn');
-                        submitBtn.innerHTML =
-                            '<span>Envoi en cours...</span><i class="fas fa-spinner fa-spin"></i>';
-                        submitBtn.disabled = true;
-
-                        setTimeout(() => {
-                            contactForm.reset();
-                            successMessage.classList.add('show');
-                            submitBtn.innerHTML =
-                                '<span>Envoyer le message</span><i class="fas fa-paper-plane"></i>';
-                            submitBtn.disabled = false;
-
-                            // Hide success message after 5 seconds
-                            setTimeout(() => {
-                                successMessage.classList.remove('show');
-                            }, 5000);
-                        }, 1500);
-                    }
-                });
-            }
 
             // Phone validation helper
             function validatePhone(phone) {
@@ -1200,8 +1109,8 @@
         });
     </script>
     <!-- Scripts pour les éléments uniformisés -->
-   <script src="{{ asset('assets/js/footer-utils.js') }}"></script>
-     <script src="{{ asset('assets/js/header-utils.js') }}"></script>
+    <script src="{{ asset('assets/js/footer-utils.js') }}"></script>
+    <script src="{{ asset('assets/js/header-utils.js') }}"></script>
 </body>
 
 </html>

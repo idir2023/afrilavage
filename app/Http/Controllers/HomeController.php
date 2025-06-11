@@ -160,7 +160,7 @@ class HomeController extends Controller
                 'base_price' => $basePrice,
                 'options_price' => $optionsPrice,
                 'discount_amount' => 0,
-                'total_price' => $totalPrice,
+                'total_price' => $request->input('total_price'),
                 'promo_code' => $request->input('promo_code'),
 
                 // Payment

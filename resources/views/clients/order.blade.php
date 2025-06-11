@@ -1606,6 +1606,7 @@
                                 <div class="summary-total">
                                     <div class="summary-total-label">Total</div>
                                     <div class="summary-total-price" id="orderTotal">120 DH</div>
+                                    <input type="text" value="" name="total_price" id="TotalPrice">
                                 </div>
                             </div>
 
@@ -1836,6 +1837,7 @@
             const orderSuccess = document.getElementById('orderSuccess');
             const summaryItems = document.getElementById('summaryItems');
             const orderTotal = document.getElementById('orderTotal');
+            const TotalPrice = document.getElementById('TotalPrice');
 
             // Mise à jour des prix (tarifs plus abordables)
             const priceMap = {
@@ -1973,6 +1975,7 @@
                 // Mettre à jour l'affichage du prix total
                 if (orderTotal) {
                     orderTotal.textContent = `${totalPrice} DH`;
+                    TotalPrice.value = totalPrice;
                 }
 
                 // Mettre à jour le récapitulatif
