@@ -1509,14 +1509,14 @@
                                                 <div class="form-group">
                                                     <label class="form-label">Nom complet</label>
                                                     <input type="text" class="form-input"
-                                                        placeholder="Votre nom complet" name="fullname" value="{{ Auth::user()->username }}">
+                                                        placeholder="Votre nom complet" name="fullname">
                                                 </div>
                                             </div>
                                             <div class="form-col">
                                                 <div class="form-group">
                                                     <label class="form-label">Téléphone</label>
                                                     <input type="tel" class="form-input"
-                                                        placeholder="Votre numéro de téléphone" name="phone" value="{{ Auth::user()->phone }}">
+                                                        placeholder="Votre numéro de téléphone" name="phone">
                                                 </div>
                                             </div>
                                         </div>
@@ -1614,18 +1614,6 @@
                                 <label class="form-label">Méthode de paiement</label>
 
                                 <div class="payment-methods">
-                                    <div class="payment-method active">
-                                        <input type="radio" name="payment-method" value="card" id="payment-card"
-                                            checked style="display: none;">
-                                        <div class="payment-icon">
-                                            <i class="fas fa-credit-card"></i>
-                                        </div>
-                                        <div class="payment-info">
-                                            <div class="payment-name">Carte bancaire</div>
-                                            <div class="payment-desc">Paiement sécurisé par carte bancaire</div>
-                                        </div>
-                                    </div>
-
                                     <div class="payment-method">
                                         <input type="radio" name="payment-method" value="cash" id="payment-cash"
                                             style="display: none;">
@@ -1638,7 +1626,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="payment-method">
+                                    <div class="payment-method active">
                                         <input type="radio" name="payment-method" value="mobile"
                                             id="payment-mobile" style="display: none;">
                                         <div class="payment-icon">
@@ -1652,38 +1640,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" id="cardPaymentForm">
-                                <div class="form-row">
-                                    <div class="form-col">
-                                        <label class="form-label">Numéro de carte</label>
-                                        <div class="input-group">
-                                            <i class="fas fa-credit-card input-icon"></i>
-                                            <input type="text" class="form-input"
-                                                placeholder="1234 5678 9012 3456" name="card-number">
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="form-row">
-                                    <div class="form-col">
-                                        <label class="form-label">Titulaire de la carte</label>
-                                        <input type="text" class="form-input" placeholder="Nom sur la carte"
-                                            name="card-name">
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-col">
-                                        <label class="form-label">Date d'expiration</label>
-                                        <input type="text" class="form-input" placeholder="MM/AA"
-                                            name="card-expiry">
-                                    </div>
-                                    <div class="form-col">
-                                        <label class="form-label">Code CVC</label>
-                                        <input type="text" class="form-input" placeholder="123" name="card-cvc">
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">

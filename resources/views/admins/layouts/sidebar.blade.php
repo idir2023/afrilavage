@@ -3,7 +3,7 @@
 
          <li class="nav-item nav-profile">
              <a href="#" class="nav-link">
-             
+
                  <div class="nav-profile-text d-flex flex-column">
                      <span class="font-weight-bold mb-2">{{ Auth::user()->username }}</span>
                      <span class="text-secondary text-small">{{ Auth::user()->role }}</span>
@@ -19,35 +19,37 @@
              </a>
          </li>
 
-         <li class="nav-item">
-             <a class="nav-link" href="{{ route('orders.index') }}">
-                 <span class="menu-title">Orders</span>
-                 {{-- <i class="mdi mdi-receipt menu-icon"></i> --}}
-                 <i class="mdi mdi-cart-outline menu-icon"></i>
+         @if (auth()->user()->role == 'admin')
+             <li class="nav-item">
+                 <a class="nav-link" href="{{ route('orders.index') }}">
+                     <span class="menu-title">Orders</span>
+                     {{-- <i class="mdi mdi-receipt menu-icon"></i> --}}
+                     <i class="mdi mdi-cart-outline menu-icon"></i>
 
-             </a>
-         </li>
+                 </a>
+             </li>
 
-         <li class="nav-item">
-             <a class="nav-link" href="{{ route('notifications.index') }}">
-                 <span class="menu-title">Notifications</span>
-                 <i class="mdi mdi-bell-outline menu-icon"></i>
-             </a>
-         </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="{{ route('notifications.index') }}">
+                     <span class="menu-title">Notifications</span>
+                     <i class="mdi mdi-bell-outline menu-icon"></i>
+                 </a>
+             </li>
 
 
-         <li class="nav-item">
-             <a class="nav-link" href="{{ route('services.index') }}">
-                 <span class="menu-title">Services</span>
-                 <i class="mdi mdi-briefcase-outline menu-icon"></i>
-             </a>
-         </li>
-<li class="nav-item">
-  <a class="nav-link" href="{{ route('contact.index') }}">
-    <span class="menu-title">Contact</span>
-    <i class="mdi mdi-email-outline menu-icon"></i>
-  </a>
-</li>
+             <li class="nav-item">
+                 <a class="nav-link" href="{{ route('services.index') }}">
+                     <span class="menu-title">Services</span>
+                     <i class="mdi mdi-briefcase-outline menu-icon"></i>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="{{ route('contact.index') }}">
+                     <span class="menu-title">Contact</span>
+                     <i class="mdi mdi-email-outline menu-icon"></i>
+                 </a>
+             </li>
+         @endif
 
 
 

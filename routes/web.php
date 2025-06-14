@@ -7,7 +7,7 @@
     use App\Http\Controllers\NotificationController;
     use App\Http\Controllers\ProfileController;
     use App\Http\Controllers\ServiceController;
-    
+
     use App\Http\Controllers\MessageController;
 
 
@@ -30,32 +30,32 @@
     Route::post('/order/save', [HomeController::class, 'store'])->name('order-store');
 
 
-// Affichage du formulaire de contact
+    // Affichage du formulaire de contact
 
 
-// Enregistrement du message
-Route::post('/contact', [MessageController::class, 'store'])
-     ->name('contact.store');
+    // Enregistrement du message
+    Route::post('/contact', [MessageController::class, 'store'])
+        ->name('contact.store');
 
 
 
     // Gestion des commandes (CRUD)
 
     // Tableau de bord (admin)
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::resource('orders', OrderController::class);
         Route::post('/notifications/{id}/read', [OrderController::class, 'markAsRead'])->name('notifications.read');
         Route::resource('notifications', NotificationController::class);
         Route::resource('services', ServiceController::class);
-            // Contacts
+        // Contacts
 
-     Route::get('/contacts', [MessageController::class, 'index'])
-              ->name('contact.index');
-         Route::get('/contacts/{contact}', [MessageController::class, 'show'])
-              ->name('contact.show');
-         Route::delete('/contacts/{contact}', [MessageController::class, 'destroy'])
-              ->name('contact.destroy');
+        Route::get('/contacts', [MessageController::class, 'index'])
+            ->name('contact.index');
+        Route::get('/contacts/{contact}', [MessageController::class, 'show'])
+            ->name('contact.show');
+        Route::delete('/contacts/{contact}', [MessageController::class, 'destroy'])
+            ->name('contact.destroy');
 
 
         // Tu peux ajouter d'autres routes admin ici, par exemple :

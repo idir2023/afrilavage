@@ -79,7 +79,7 @@ return new class extends Migration
             $table->string('promo_code')->nullable();
 
             // Paiement
-            $table->enum('payment_method', ['card', 'cash', 'mobile']);
+            $table->enum('payment_method', ['cash', 'mobile']);
             $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
 
             // Timestamps

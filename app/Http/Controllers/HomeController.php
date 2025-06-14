@@ -58,7 +58,7 @@ class HomeController extends Controller
             'address' => 'required|string',
             'city' => 'required|string|max:100',
             'zip' => 'required|string|max:10',
-            'payment-method' => 'required|in:card,cash,mobile',
+            'payment-method' => 'required|in:cash,mobile',
             'terms-agree' => 'required',
 
             // Conditional validation based on service type
