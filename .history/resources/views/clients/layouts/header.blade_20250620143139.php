@@ -20,10 +20,10 @@
                      <a href="{{ route('order') }}"
                          class="nav-link {{ request()->routeIs('order') ? 'active' : '' }}">Commander</a>
                  </li>
-                 {{-- <li class="nav-item">
+                 <li class="nav-item">
                      <a href="{{ route('tracking') }}"
                          class="nav-link {{ request()->routeIs('tracking') ? 'active' : '' }}">Suivi</a>
-                 </li> --}}
+                 </li>
                  <li class="nav-item">
                      <a href="{{ route('contact') }}"
                          class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>

@@ -1626,7 +1626,7 @@
                                         </div>
                                     </div>
 
-                                    {{-- <div class="payment-method active">
+                                    <div class="payment-method active">
                                         <input type="radio" name="payment-method" value="mobile"
                                             id="payment-mobile" style="display: none;">
                                         <div class="payment-icon">
@@ -1636,7 +1636,7 @@
                                             <div class="payment-name">Paiement mobile</div>
                                             <div class="payment-desc">Payez via votre application bancaire mobile</div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
 
